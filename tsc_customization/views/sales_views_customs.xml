@@ -1,0 +1,23 @@
+<openerp>
+  <data>
+<!--    ADD COMMISION TO SALES ORDER LINES-->
+  <record model="ir.ui.view" id="sales_order_lines_custom">
+    <field name="name">sale.order.line.custom</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']" position="after">
+                  <field name="commission_options"/>
+                  <field name="commission"/>
+                  <field name="fxrate" invisible="1"/>
+            </xpath>
+            <xpath expr="//sheet/group/group/field[@name='payment_term_id']" position="after">
+                  <field name="fxrate" />
+            </xpath>
+        </data>
+    </field>
+  </record>
+
+  </data>
+</openerp>
